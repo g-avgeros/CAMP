@@ -10,7 +10,7 @@ GROUP BY payMethod
 
 SELECT TOP 1 staffName, staffSurname, COUNT(bd.bookCode) AS total 
 FROM staff s 
-	INNER JOIN book b			    ON s.staffNo	  = b.staffNo
+	INNER JOIN book b		ON s.staffNo	= b.staffNo
 	INNER JOIN bookDetails bd	ON bd.bookCode	= b.bookCode
 GROUP BY staffName, staffSurname
 ORDER BY total DESC 
@@ -20,8 +20,8 @@ ORDER BY total DESC
 
 SELECT COUNT(bookCode) AS total
 FROM seat s 
-	INNER JOIN  bookDetails bd	ON bd.empNo		= s.empNo
-	INNER JOIN  camp c			    ON c.campCode	= bd.campCode
+	INNER JOIN  bookDetails bd	ON bd.empNo	= s.empNo
+	INNER JOIN  camp c		ON c.campCode	= bd.campCode
 WHERE s.catCode = 'A'
 
 
@@ -29,8 +29,8 @@ WHERE s.catCode = 'A'
 
 SELECT custSurname, custName, COUNT(bookCode) AS total
 FROM customer c 
-	INNER JOIN book b			      ON c.custCode	=   b.custCode
-WHERE bookDt >= '2000-1-1'		and bookDt		<= '2000-12-31'
+	INNER JOIN book b		ON c.custCode	=   b.custCode
+WHERE bookDt >= '2000-1-1'		and bookDt	<= '2000-12-31'
 GROUP BY custSurname, custName
 ORDER BY custSurname
 
@@ -44,9 +44,9 @@ FROM (
 		SELECT  c.campCode, c.campName, bd.startDt, bd.endDt, bd.noPers, cat.unitCost,
 				cat.unitCost * bd.noPers * (DATEDIFF(day, bd.startDt, bd.endDt) + 1) AS costPerRental
 		FROM bookDetails bd
-			INNER JOIN camp c			      ON bd.campCode	= c.campCode
-			INNER JOIN seat s			      ON bd.empNo		  = s.empNo
-			INNER JOIN seatCategory cat ON s.catCode	  = cat.catCode
+			INNER JOIN camp c		ON bd.campCode	= c.campCode
+			INNER JOIN seat s		ON bd.empNo	= s.empNo
+			INNER JOIN seatCategory cat 	ON s.catCode	= cat.catCode
 ) cost_per_rental
 
 
@@ -59,12 +59,12 @@ FROM (
 
 DROP INDEX IF EXISTS idx_custSurname_bookDt ON book
 
-CREATE INDEX idx_custSurname_bookDt		      ON book (bookDt) 
+CREATE INDEX idx_custSurname_bookDt	ON book (bookDt) 
 
 SELECT custSurname, custName, COUNT(bookCode) AS total
 FROM customer c 
-	INNER JOIN book b		      ON c.custCode = b.custCode
-WHERE bookDt >= '2000-1-1'  and bookDt    <= '2000-12-31'
+	INNER JOIN book b		ON c.custCode = b.custCode
+WHERE bookDt >= '2000-1-1' 		and bookDt    <='2000-12-31'
 GROUP BY custSurname, custName
 ORDER BY custSurname
 
@@ -82,9 +82,9 @@ FROM
 		SELECT  c.campCode, c.campName, bd.startDt, bd.endDt, bd.noPers, cat.unitCost,
 				cat.unitCost * bd.noPers * (DATEDIFF(day, bd.startDt, bd.endDt) + 1) AS costPerRental
 		FROM bookDetails bd
-			INNER JOIN camp c			      ON bd.campCode	= c.campCode
-			INNER JOIN seat s			      ON bd.empNo		  = s.empNo
-			INNER JOIN seatCategory cat ON s.catCode	  = cat.catCode
+			INNER JOIN camp c			ON bd.campCode	= c.campCode
+			INNER JOIN seat s			ON bd.empNo	= s.empNo
+			INNER JOIN seatCategory cat 		ON s.catCode	= cat.catCode
 ) cost_per_rental
 
 
