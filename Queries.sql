@@ -1,4 +1,4 @@
-Total number of bookings per payment method.
+--Total number of bookings per payment method.
 
 SELECT payMethod, COUNT(bookCode) AS total 
 FROM payment p 
@@ -6,8 +6,7 @@ FROM payment p
 GROUP BY payMethod
 
 
-The name of the employee who processed the most
-reservations.
+--The name of the employee who processed the most reservations.
 
 SELECT TOP 1 staffName, staffSurname, COUNT(bd.bookCode) AS total 
 FROM staff s 
@@ -17,7 +16,7 @@ GROUP BY staffName, staffSurname
 ORDER BY total DESC 
 
 
-Total number of bookings that contain only seats category "A" of one or more camps.
+--Total number of bookings that contain only seats category "A" of one or more camps.
 
 SELECT COUNT(bookCode) AS total
 FROM seat s 
@@ -26,7 +25,7 @@ FROM seat s
 WHERE s.catCode = 'A'
 
 
-The name of each customer and the total number of bookings made in the year 2000.
+--The name of each customer and the total number of bookings made in the year 2000.
 
 SELECT custSurname, custName, COUNT(bookCode) AS total
 FROM customer c 
@@ -37,7 +36,7 @@ ORDER BY custSurname
 
 
 
-The total value of bookings (total revenue) per camp.
+--The total value of bookings (total revenue) per camp.
 
 SELECT DISTINCT campCode, campName,
 SUM(costPerRental) OVER(PARTITION BY campCode) AS totalCost
@@ -56,7 +55,8 @@ FROM (
 -- INDEXES
 ------------------------------------------------------------------------------------------
 
-An index for the query to find the name of each customer and the total number of bookings made in the year 2000.
+--An index for the query to find the name of each customer and the total number of bookings made in the year 2000.
+
 DROP INDEX IF EXISTS idx_custSurname_bookDt ON book
 
 CREATE INDEX idx_custSurname_bookDt		      ON book (bookDt) 
@@ -69,7 +69,7 @@ GROUP BY custSurname, custName
 ORDER BY custSurname
 
 
-An index for the query to find the total value of bookings (total revenue) per camp.
+--An index for the query to find the total value of bookings (total revenue) per camp.
 
 DROP INDEX IF EXISTS idx_bookDetailsCode ON bookDetails
 
