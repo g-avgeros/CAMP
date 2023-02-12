@@ -2,7 +2,7 @@
 
 SELECT payMethod, COUNT(bookCode) AS total 
 FROM payment p 
-	INNER JOIN book b			ON p.payCode = b.payCode 
+	INNER JOIN book b ON p.payCode = b.payCode 
 GROUP BY payMethod
 
 
@@ -30,7 +30,7 @@ WHERE s.catCode = 'A'
 SELECT custSurname, custName, COUNT(bookCode) AS total
 FROM customer c 
 	INNER JOIN book b		ON c.custCode	=   b.custCode
-WHERE bookDt >= '2000-1-1'		and bookDt	<= '2000-12-31'
+WHERE bookDt >= '2000-1-1'		AND bookDt	<= '2000-12-31'
 GROUP BY custSurname, custName
 ORDER BY custSurname
 
