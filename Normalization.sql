@@ -14,7 +14,7 @@ GO
 CREATE TABLE customer (
 	custCode	INTEGER		PRIMARY KEY,
 	custName	VARCHAR(30),
-	custSurname VARCHAR(30),
+	custSurname 	VARCHAR(30),
 	custPhone	VARCHAR(20)
 )
 GO
@@ -27,7 +27,7 @@ GO
 CREATE TABLE staff (
 	staffNo		INTEGER		PRIMARY KEY,
 	staffName	VARCHAR(30),
-	staffSurname VARCHAR(30),
+	staffSurname 	VARCHAR(30),
 )
 GO
 
@@ -91,8 +91,8 @@ CREATE TABLE bookDetails (
 	endDt				DATE,
 	noPers				INTEGER,
 	bookCode			INTEGER					REFERENCES book (bookCode),
-    campCode			CHAR(3)					REFERENCES camp (campCode),
-    empNo				INTEGER					REFERENCES seat (empNo),
+    	campCode			CHAR(3)					REFERENCES camp (campCode),
+    	empNo				INTEGER					REFERENCES seat (empNo),
 )
 GO
 
