@@ -1,4 +1,4 @@
-<strong>Normalization and Creating a Logical Schema</strong>
+#Normalization and Creating a Logical Schema
 
 A initial table campData to load the campData file data.
 
