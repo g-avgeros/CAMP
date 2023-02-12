@@ -48,7 +48,7 @@ CREATE TABLE bookingFact (
 	noPers		INTEGER,
 	costPerRental	NUMERIC(19,2),
 	totalCost	NUMERIC(19,2),
-					PRIMARY KEY(bookCode, bookDt, empNo, campCode, custCode, startDt, endDt, noPers)
+	PRIMARY KEY(bookCode, bookDt, empNo, campCode, custCode, startDt, endDt, noPers)
 )
 GO
 
