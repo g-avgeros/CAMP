@@ -1,4 +1,4 @@
-# Normalization and Creating a Logical Schema
+<strong>Normalization and Creating a Logical Schema</strong>
 
 A initial table campData to load the campData file data.
 
@@ -30,7 +30,8 @@ CREATE TABLE campData
   
   
   
-#Load Data to the table campData
+Load Data to the table campData
+
 SET DATEFORMAT dmy;
 BULK INSERT campData
 FROM 'C:\Users\iMasteRepair\Desktop\My project github\SQL\Project\campData.txt'
