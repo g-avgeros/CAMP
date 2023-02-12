@@ -35,8 +35,3 @@ BULK INSERT campData
 FROM 'C:\Users\iMasteRepair\Desktop\My project github\SQL\Project\campData.txt'
 WITH (FIRSTROW = 2,FIELDTERMINATOR= ',', ROWTERMINATOR = '\n');
 
-
-
-
-
-
