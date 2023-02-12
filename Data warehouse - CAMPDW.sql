@@ -1,5 +1,4 @@
---Create the data warehouse
---Star Schema
+--Create the tables of the data warehouse(Star Schema)
 
 USE CAMPDW
 GO
@@ -39,17 +38,17 @@ CREATE TABLE dateDim (
 )
 
 CREATE TABLE bookingFact (
-	bookCode		INTEGER,
-	bookDt			DATE        REFERENCES	dateDim(dateKey),
-	empNo			  INTEGER     REFERENCES	seatDim(empNo),
-	campCode		CHAR(3)     REFERENCES	campDim(campCode),
-	custCode		INTEGER     REFERENCES	customerDim(custCode),
-	startDt			DATE,
-	endDt			  DATE,
-	noPers			INTEGER,
+	bookCode	INTEGER,
+	bookDt		DATE		REFERENCES	dateDim(dateKey),
+	empNo		INTEGER		REFERENCES	seatDim(empNo),
+	campCode	CHAR(3)		REFERENCES	campDim(campCode),
+	custCode	INTEGER		REFERENCES	customerDim(custCode),
+	startDt		DATE,
+	endDt		DATE,
+	noPers		INTEGER,
 	costPerRental	NUMERIC(19,2),
-	totalCost		NUMERIC(19,2),
-	PRIMARY KEY(bookCode, bookDt, empNo, campCode, custCode, startDt, endDt, noPers)
+	totalCost	NUMERIC(19,2),
+					PRIMARY KEY(bookCode, bookDt, empNo, campCode, custCode, startDt, endDt, noPers)
 )
 GO
 
