@@ -25,7 +25,7 @@ WHERE rankedByTotal <= 100
 SELECT c.campName, s.catCode, SUM(b.totalCost) AS totalCost
 FROM bookingFact b
 	INNER JOIN campDim c	ON c.campCode	= b.campCode
-	INNER JOIN seatDim s	ON s.empNo		= b.empNo
+	INNER JOIN seatDim s	ON s.empNo	= b.empNo
 	INNER JOIN dateDim d	ON d.dateKey	= b.bookDt
 WHERE d.d_year=2000
 GROUP BY s.catCode, c.campName
@@ -36,7 +36,7 @@ GROUP BY s.catCode, c.campName
 SELECT c.campName, d.d_month, SUM(b.totalCost) AS totalCost
 FROM bookingFact b
 	INNER JOIN campDim c	ON c.campCode	= b.campCode
-	INNER JOIN seatDim s	ON s.empNo		= b.empNo
+	INNER JOIN seatDim s	ON s.empNo	= b.empNo
 	INNER JOIN dateDim d	ON d.dateKey	= b.bookDt
 WHERE d.d_year=2018
 GROUP BY c.campName, d.d_month
@@ -49,7 +49,7 @@ SELECT d.d_year, ca.campName, s.catCode, COUNT(c.custCode) AS totalRenters
 FROM bookingFact b
 	INNER JOIN customerDim c	ON c.custCode	= b.custCode
 	INNER JOIN campDim ca		ON ca.campCode	= b.campCode
-	INNER JOIN seatDim s		ON s.empNo		= b.empNo
+	INNER JOIN seatDim s		ON s.empNo	= b.empNo
 	INNER JOIN dateDim d		ON d.dateKey	= b.bookDt
 GROUP BY 
 	GROUPING SETS (
@@ -67,7 +67,7 @@ SELECT d.d_year, ca.campName, s.catCode, SUM(costPerRental) AS totalCost
 FROM bookingFact b
 	INNER JOIN customerDim c	ON c.custCode	= b.custCode
 	INNER JOIN campDim ca		ON ca.campCode	= b.campCode
-	INNER JOIN seatDim s		ON s.empNo		= b.empNo
+	INNER JOIN seatDim s		ON s.empNo	= b.empNo
 	INNER JOIN dateDim d		ON d.dateKey	= b.bookDt
 GROUP BY CUBE (
 		(d.d_year),
