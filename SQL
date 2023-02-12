@@ -3,15 +3,15 @@
 A initial table campData to load the campData file data.
 
 CREATE TABLE campData
-( bookCode		    INTEGER,
-  bookDt		      DATE,
-  payCode		      INTEGER,
-  payMethod		    CHAR(2),
-  custCode		    INTEGER,
-  custName		    VARCHAR(30),
+( bookCode        INTEGER,
+  bookDt          DATE,
+  payCode         INTEGER,
+  payMethod       CHAR(2),
+  custCod         INTEGER,
+  custName        VARCHAR(30),
   custSurname     VARCHAR(30),
   custPhone       VARCHAR(20),
-  staffNo		      INTEGER,
+  staffNo         INTEGER,
   staffName       VARCHAR(30),
   staffSurname    VARCHAR(30),
   totalCost		    NUMERIC (19,2),
