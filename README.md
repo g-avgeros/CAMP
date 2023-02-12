@@ -9,5 +9,7 @@ of acreage, within the campground, in which customers can tent camp, caravan or 
 three letter code, a name and contains a specific number of positions:
 
 APL - Apollonia 70 seats
+
 KIS - Kissamos 50 seats
+
 DIS - Dionysus 100 seats
