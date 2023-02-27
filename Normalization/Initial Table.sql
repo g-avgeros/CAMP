@@ -26,7 +26,6 @@ CREATE TABLE campData
 );
 GO 
   
-  
 --Load Data to the table campData
 SET DATEFORMAT dmy;
 BULK INSERT campData
