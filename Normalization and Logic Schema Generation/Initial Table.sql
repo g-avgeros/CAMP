@@ -1,5 +1,4 @@
-A initial table campData to load the campData file data.
-
+--A initial table campData to load the campData file data.
 CREATE TABLE campData
 ( bookCode        INTEGER,
   bookDt          DATE,
@@ -25,13 +24,12 @@ CREATE TABLE campData
   noPers          INTEGER,
   costPerRental   NUMERIC (19,2)
 );
+GO 
   
   
-  
-Load Data to the table campData
-
+--Load Data to the table campData
 SET DATEFORMAT dmy;
 BULK INSERT campData
 FROM 'C:\Users\iMasteRepair\Desktop\My project github\SQL\Project\campData.txt'
 WITH (FIRSTROW = 2,FIELDTERMINATOR= ',', ROWTERMINATOR = '\n');
-
+GO

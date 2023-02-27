@@ -7,7 +7,6 @@ CREATE TABLE payment (
 )
 GO
 
-
 ---CREATE TABLE customer---
 DROP TABLE IF EXISTS customer
 GO
@@ -19,8 +18,6 @@ CREATE TABLE customer (
 )
 GO
 
-
-
 ---CREATE TABLE staff---
 DROP TABLE IF EXISTS staff
 GO
@@ -30,8 +27,6 @@ CREATE TABLE staff (
 	staffSurname 	VARCHAR(30),
 )
 GO
-
-
 
 ---CREATE TABLE camp---
 DROP TABLE IF EXISTS camp
@@ -43,8 +38,6 @@ CREATE TABLE camp (
 )
 GO
 
-
-
 ---CREATE TABLE seatCategory---
 DROP TABLE IF EXISTS seatCategory
 GO
@@ -55,8 +48,6 @@ CREATE TABLE seatCategory (
 )
 GO
 
-
-
 ---CREATE TABLE seat---
 DROP TABLE IF EXISTS seat
 GO
@@ -65,8 +56,6 @@ CREATE TABLE seat (
 	catCode		CHAR(1)		REFERENCES seatCategory (catCode),
 )
 GO
-
-
 
 ---CREATE TABLE book---
 DROP TABLE IF EXISTS book
@@ -79,8 +68,6 @@ CREATE TABLE book (
     staffNo		INTEGER		REFERENCES staff (staffNo),
 )
 GO
-
-
 
 ---CREATE TABLE bookDetails---
 DROP TABLE IF EXISTS bookDetails
@@ -96,44 +83,34 @@ CREATE TABLE bookDetails (
 )
 GO
 
-
-
-
 ---INSERT DATA INTO TABLES-----
 INSERT INTO payment
 SELECT DISTINCT payCode, payMethod FROM campData
 GO
 
-
 INSERT INTO customer
 SELECT DISTINCT custCode, custName, custSurname, custPhone FROM campData
 GO
-
 
 INSERT INTO staff
 SELECT DISTINCT staffNo, staffName, staffSurname FROM campData
 GO
 
-
 INSERT INTO camp
 SELECT DISTINCT campCode, campName, numOfEmp FROM campData
 GO
-
 
 INSERT INTO seatCategory
 SELECT DISTINCT catCode, areaM2, unitCost  FROM campData
 GO
 
-
 INSERT INTO seat
 SELECT DISTINCT empNo, catCode FROM campData
 GO
 
-
 INSERT INTO book
 SELECT DISTINCT bookCode, bookDt, payCode, custCode, staffNo FROM campData
 GO
-
 
 INSERT INTO bookDetails 
 SELECT startDt, endDt, noPers, bookCode, campCode, empNo FROM campData;

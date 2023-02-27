@@ -1,5 +1,4 @@
 --Create the tables of the data warehouse(Star Schema)
-
 USE CAMPDW
 GO
 
@@ -16,12 +15,14 @@ CREATE TABLE customerDim (
 	custSurname VARCHAR(30),
 	custPhone   VARCHAR(20)
 )
+GO
 
 CREATE TABLE campDim (
 	campCode    CHAR(3)     PRIMARY KEY,
 	campName    VARCHAR(50),
 	numOfEmp    INTEGER,
 )
+GO
 
 CREATE TABLE seatDim (
 	empNo       INTEGER     PRIMARY KEY,
@@ -29,6 +30,7 @@ CREATE TABLE seatDim (
 	areaM2      INTEGER,
 	unitCost    NUMERIC(4,2),
 )
+GO
 
 CREATE TABLE dateDim (
 	dateKey     DATE          PRIMARY KEY,
@@ -36,6 +38,7 @@ CREATE TABLE dateDim (
 	d_month     INTEGER,
 	d_day       INTEGER,
 )
+GO
 
 CREATE TABLE bookingFact (
 	bookCode	INTEGER,

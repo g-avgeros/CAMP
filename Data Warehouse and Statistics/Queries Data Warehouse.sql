@@ -1,5 +1,4 @@
 --A list of the company's first hundred best customers.
-
 SELECT custCode, custName, custSurname, total, rankedByTotal
 FROM 
 (
@@ -18,10 +17,9 @@ FROM
 	) total_books_per_cust
 ) ranked_by_total
 WHERE rankedByTotal <= 100
-
+GO
 
 --The total value of each campsite's bookings per position category for the year 2000.
-
 SELECT c.campName, s.catCode, SUM(b.totalCost) AS totalCost
 FROM bookingFact b
 	INNER JOIN campDim c	ON c.campCode	= b.campCode
@@ -29,10 +27,9 @@ FROM bookingFact b
 	INNER JOIN dateDim d	ON d.dateKey	= b.bookDt
 WHERE d.d_year=2000
 GROUP BY s.catCode, c.campName
-
+GO
 
 --The total value of bookings per campsite in monthly basis for the year 2018.
-
 SELECT c.campName, d.d_month, SUM(b.totalCost) AS totalCost
 FROM bookingFact b
 	INNER JOIN campDim c	ON c.campCode	= b.campCode
@@ -41,10 +38,9 @@ FROM bookingFact b
 WHERE d.d_year=2018
 GROUP BY c.campName, d.d_month
 ORDER BY c.campName, d.d_month
-
+GO
 
 --The total number of tenants per year, camp and position category.
-
 SELECT d.d_year, ca.campName, s.catCode, COUNT(c.custCode) AS totalRenters
 FROM bookingFact b
 	INNER JOIN customerDim c	ON c.custCode	= b.custCode
@@ -59,10 +55,9 @@ GROUP BY
 		(d.d_year, ca.campName, s.catCode)
 	)
 ORDER BY d.d_year, ca.campName, s.catCode
-
+GO
 
 --A cube which breaks down the value of bookings by year, camp and seat category.
-
 SELECT d.d_year, ca.campName, s.catCode, SUM(costPerRental) AS totalCost
 FROM bookingFact b
 	INNER JOIN customerDim c	ON c.custCode	= b.custCode
